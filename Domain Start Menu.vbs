@@ -6,11 +6,10 @@ Set objFSO = CreateObject("Scripting.FileSystemObject")
 Set wshShell = CreateObject("WScript.Shell")
 
 'Set path to shared startmenu
-serverStartMenu = "\\greatwood.local\users\startmenu"
+serverStartMenu = "\\localhost\startmenu"
 
 'Path to local folder you want to create the start menu in
 localpath = "C:\startmenu"
-
 
 'Checks to see if on the network before running the rest of the script
 If objFSO.FolderExists(serverStartMenu) Then
@@ -26,13 +25,12 @@ If objFSO.FolderExists(serverStartMenu) Then
 End If
 
 
-Sub SearchFolder(Folder)	
+Sub SearchFolder(folder)	
 
-	Set objFolder = objFSO.GetFolder(Folder.Path)
-	Set colFiles = objFolder.Files
+	Set objFolder = objFSO.GetFolder(folder.Path)
 
 	'finds extension for each file in folder and if lnk file (shortcut) run test to see if its valid on this computer
-	For Each objFile in colFiles
+	For Each objFile in objFolder.Files
 		extArray = split(objFile.Name,".")
 		ext = extArray(ubound(extArray))
 		If lcase(ext) = "lnk" Then
@@ -48,10 +46,12 @@ Sub SearchFolder(Folder)
 		End If
 	Next
 	
-	'recursively search through all subfolders
-	For Each Subfolder in Folder.SubFolders
-		SearchFolder Subfolder
-		
+	'recursively search through all subfolders deleting any empty ones
+	For Each subFolder in Folder.SubFolders
+		SearchFolder subFolder
+		if ((subFolder.files.count = 0) AND (subFolder.subFolders.count = 0)) then
+			subFolder.delete 
+		end if
 	Next
 	
 End Sub
