@@ -10,8 +10,8 @@ Set wshShell = CreateObject("WScript.Shell")
 'Format is - "path of startmenu to copy" ; "path of local startmenu"
 
 locationsArray = Array	(	"\\localhost\startmenu\pupils;C:\startmenu\pupils",_
-							"\\localhost\startmenu\staff;C:\startmenu\staff"_
-						)
+				"\\localhost\startmenu\staff;C:\startmenu\staff"_
+			)
 
 'iterate though each item in locationsArray
 for each item in locationsArray
