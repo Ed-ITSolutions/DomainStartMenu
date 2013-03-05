@@ -23,34 +23,36 @@ All shortcuts pointing to anything other than the C drive will not be checked
 
 Example Start Menu Dir Tree
 
-D:\USERS\STARTMENU
-│   Adobe Reader XI.lnk
-│   Espresso Primary.url
-│   Internet Explorer.lnk
-│   ITP's.url
-│   Lancs Outlook Email.url
-│   SIMS .net.LNK
-│
-└───Programs
-    ├───Accessories
-    │       Calculator.lnk
-    │       displayswitch.lnk
-    │       Math Input Panel.lnk
-    │       Paint.lnk
-    │       Snipping Tool.lnk
-    │       Sound Recorder.lnk
-    │       Wordpad.lnk
+    \\yourserver\startmenu
+    │   Adobe Reader XI.lnk
+    │   Intranet.url
     │
-    ├───Art
-    │       Clicker Paint.lnk
-    │
-    ├───Forgin Languages
-    │       Classroom Solutions French.lnk
-    │       Pilot Moi Videos.lnk
-    │
-    ├───Geography
-    │       Ace Monkey - EnvironmentKS1.lnk
-    │       Ace Monkey - Places.lnk
-    │       Barnaby Bear's EAtlas.lnk
-    │       Coast 2 Coast.lnk
-    │       The River CD.lnk
+    └───Programs
+        ├───Accessories
+        │       Calculator.lnk
+        │       displayswitch.lnk
+        │       Math Input Panel.lnk
+        │       Paint.lnk
+        │       Snipping Tool.lnk
+        │       Sound Recorder.lnk
+        │       Wordpad.lnk
+        │
+        ├───Finance
+        │       Accounts.lnk
+        │
+        ├───Office
+        │       Word 2010.lnk
+        │
+        ├───IT
+        │       Webmail.lnk
+        
+## Other Tricks
+
+### 64 Bit Shortcuts
+
+If you have both 64bit and 32 Bit windows on your network you will know the pain of providing shortcuts to software in C:\Program Files (x86), because this solution checks to see if software is installed you can provide both like this:
+
+    Title.lnk -> C:\Program Files (x86)\Title\run.exe
+    Title .lnk -> C:\Program Files\Title\run.exe
+    
+This gives you both shortcuts, one with a space on the end that the user wont be aware of and a normal one. This means that your machines will only have the shortcut for the version they need.
